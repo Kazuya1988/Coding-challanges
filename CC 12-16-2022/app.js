@@ -53,3 +53,28 @@ function checkExam(array1, array2) {
 }
 
 console.log(checkExam(['a', 'a', 'b', 'c'], ['a', 'a', 'b', 'c']));
+
+// Alternate capitalization
+// Given a string, capitalize the letters that occupy even indexes and odd indexes separately, and return as shown below. Index 0 will be considered even.
+
+// For example, capitalize("abcdef") = ['AbCdEf', 'aBcDeF']. See test cases for more examples.
+
+// The input will be a lowercase string with no spaces.
+
+// Good luck!
+function capitalize(s) {
+	let firstCapital = '';
+	let secondCapital = '';
+	for (let i = 0; i < s.length; i++) {
+		if (i % 2 === 0) {
+			firstCapital += s[i].toUpperCase();
+			secondCapital += s[i];
+		} else {
+			firstCapital += s[i];
+			secondCapital += s[i].toUpperCase();
+		}
+	}
+	return [firstCapital, secondCapital];
+}
+
+console.log(capitalize('codewars'), ['CoDeWaRs', 'cOdEwArS']);
