@@ -8,10 +8,10 @@
 // Example
 // 25  =>  25 + 12 + 6 + 3 + 1 = 47
 function halvingSum(n) {
-	let sum = 0;
-	for (let i = 1; i <= 25; i *= 2) {
-		sum += Math.floor(n / i);
+	let sum = n;
+	for (let i = 1; i <= 25; i++) {
+		sum += Math.floor(n / Math.pow(2, i));
 	}
 	return sum;
 }
-console.log(halvingSum(25));
+console.log(halvingSum(127));
