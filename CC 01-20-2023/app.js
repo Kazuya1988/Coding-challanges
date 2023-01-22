@@ -43,11 +43,11 @@ console.log(halvingSum(127));
 // seven(1603) should return [7, 2]
 // seven(477557101) should return [28, 7]
 function seven(m) {
-	let x = +m.toString().split('').slice(0, -1).join('');
-	let y = +m.toString().split('').slice(-1).join('');
 	let steps = 0;
-
-	console.log(x);
-	console.log(y);
+	while (m > 99) {
+		m = Math.floor(m / 10) - 2 * (m % 10);
+		steps++;
+	}
+	return [m, steps];
 }
 console.log(seven(371));
