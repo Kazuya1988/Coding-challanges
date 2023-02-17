@@ -10,3 +10,25 @@ function sortArray(array) {
 	return array.map((e) => (e % 2 !== 0 ? (e = oddNumbers.shift()) : e));
 }
 console.log(sortArray([5, 8, 6, 3, 4]));
+
+// Split Strings
+// Complete the solution so that it splits the string into pairs of two characters. If the string contains an odd number of characters then it should replace the missing second character of the final pair with an underscore ('_').
+
+// Examples:
+
+// * 'abc' =>  ['ab', 'c_']
+// * 'abcdef' => ['ab', 'cd', 'ef']
+function solution(str) {
+	let strSplitted = str.split('');
+	if (strSplitted.length % 2 !== 0) {
+		strSplitted.push('_');
+	}
+	let resultArr = [];
+	for (let i = 0; i < strSplitted.length; i++) {
+		let newArr = [];
+		newArr.push(strSplitted[i] + strSplitted[i + 1]);
+		resultArr.push(newArr.join(''));
+	}
+	return resultArr.filter((e, i) => i % 2 === 0);
+}
+console.log(solution('abc'));
