@@ -16,6 +16,7 @@ function high(x) {
 	const scores = words
 		.map((x) => [...x].map((y) => alpha.indexOf(y) + 1))
 		.map((x) => x.reduce((a, b) => a + b, 0));
+	console.log(scores);
 
 	return words[scores.indexOf(Math.max(...scores))];
 }
