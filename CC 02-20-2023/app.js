@@ -16,16 +16,13 @@
 
 function twoSum(numbers, target) {
 	// BRUTE FORCE SOLUTION => T: O(n^2) S: O(1)
-	let indices = [];
 	for (let i = 0; i < numbers.length - 1; i++) {
 		for (let j = i + 1; j < numbers.length; j++) {
 			if (numbers[i] + numbers[j] === target) {
-				indices.push(i);
-				indices.push(j);
+				return [i, j];
 			}
 		}
 	}
-	return indices;
 	// Optimal Solution => T: O(n) S: 0(n)
 	// 	const map = {};
 	//   for (let i = 0; i < numbers.length; i++){
@@ -38,5 +35,29 @@ function twoSum(numbers, target) {
 	//      }
 	//    }
 	//   return null
+
+	// With Map
+	// 	let seen = new Map();
+	//   for (let i = 0; i < numbers.length; i++) {
+	//     let x = numbers[i], y = target - x;
+	//     if (seen.has(y))
+	//       return [seen.get(y), i];
+	//     seen.set(x, i);
+	//   }
 }
 console.log(twoSum([1, 2, 3], 4));
+
+// Break camelCase
+// Complete the solution so that the function will break up camel casing, using a space between words.
+
+// Example
+// "camelCasing"  =>  "camel Casing"
+// "identifier"   =>  "identifier"
+// ""             =>  ""
+function solution(string) {
+	return string
+		.split('')
+		.map((e) => (e === e.toLowerCase() ? e : ` ${e}`))
+		.join('');
+}
+console.log(solution('camelCasing'));
