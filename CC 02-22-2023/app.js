@@ -47,5 +47,47 @@ function queueTime(customers, n) {
 	// through the que.
 	return Math.max(...tills);
 }
-console.log(queueTime([2, 3, 10, 2], 2));
-console.log(queueTime([10, 2, 3, 3], 2));
+// console.log(queueTime([2, 3, 10, 2], 2));
+// console.log(queueTime([10, 2, 3, 3], 2));
+
+// Build Tower
+// Build a pyramid-shaped tower, as an array/list of strings, given a positive integer number of floors. A tower block is represented with "*" character.
+
+// For example, a tower with 3 floors looks like this:
+
+// [
+//   "  *  ",
+//   " *** ",
+//   "*****"
+// ]
+// And a tower with 6 floors looks like this:
+
+// [
+//   "     *     ",
+//   "    ***    ",
+//   "   *****   ",
+//   "  *******  ",
+//   " ********* ",
+//   "***********"
+// ]
+function towerBuilder(nFloors) {
+	let towerBase = new Array(nFloors + nFloors - 1).fill('*');
+	let tower = [];
+	for (let i = 0; i < nFloors; i++) {
+		let floor = [];
+		floor.push(towerBase.slice(i + i, towerBase.length).join(''));
+		floor.unshift(' '.repeat(i));
+		floor.push(' '.repeat(i));
+		tower.push(floor.flat().join(''));
+	}
+	return tower.reverse();
+	//     let tower = [];
+	//   for (var i = 0; i < nFloors; i++) {
+	//     tower.push(" ".repeat(nFloors - i - 1)
+	//              + "*".repeat((i * 2)+ 1)
+	//              + " ".repeat(nFloors - i - 1));
+	//   }
+	//   return tower;
+}
+console.log(towerBuilder(3)); // ["  *  "," *** ","*****"]
+console.log(towerBuilder(6)); // ["  *  "," *** ","*****"]
