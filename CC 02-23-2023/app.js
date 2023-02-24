@@ -10,10 +10,13 @@
 
 // [[1,2,3],[2,4,6],[3,6,9]]
 function multiplicationTable(size) {
-	let numbers = [...Array(size * size).keys()].map((i) => i + 1);
 	let table = [];
-	let newTable = [];
-	for (let i = 0; i < numbers.length; i++) {}
-	return numbers;
+	for (let i = 0; i < size; i++) {
+		table[i] = [];
+		for (let j = 0; j < size; j++) {
+			table[i][j] = (i + 1) * (j + 1);
+		}
+	}
+	return table;
 }
 console.log(multiplicationTable(3));
