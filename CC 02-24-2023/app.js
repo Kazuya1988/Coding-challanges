@@ -14,17 +14,46 @@
 
 // If the string S is an empty value or the integer N is not positive, return the first argument without changes.
 function encrypt(text, n) {
-	let even = '';
-	let odd = '';
-	for (let i = 0; i < text.length; i++) {
-		if (i % 2 === 0) {
-			even += text[i];
-		} else {
-			odd += text[i];
-		}
+	if (!text || !text.length || n <= 0) {
+		return text;
 	}
-	return odd + even;
+	while (n-- > 0) {
+		let rightStr = text
+			.split('')
+			.filter(function (e, i) {
+				return i % 2 == 0;
+			})
+			.join('');
+		let leftStr = text
+			.split('')
+			.filter(function (e, i) {
+				return i % 2 == 1;
+			})
+			.join('');
+
+		text = leftStr + rightStr;
+	}
+	return text;
+}
+
+function decrypt(encryptedText, n) {
+	if (!encryptedText || !encryptedText.length || n <= 0) {
+		return encryptedText;
+	}
+	let result = new Array(encryptedText.length);
+
+	while (n--) {
+		let j = 0;
+		for (let i = 1; i < result.length; i += 2) {
+			result[i] = encryptedText[j++];
+		}
+		for (let i = 0; i < result.length; i += 2) {
+			result[i] = encryptedText[j++];
+		}
+		encryptedText = result.join('');
+	}
+
+	return encryptedText;
 }
 console.log(encrypt('012345', 1));
-
-function decrypt(encryptedText, n) {}
+console.log(decrypt('s eT ashi tist!', 2));
