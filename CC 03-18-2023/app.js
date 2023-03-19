@@ -9,9 +9,12 @@
 // --the fourth pair is (7,6), also consecutive. Count = 3.
 // --the last digit has no pair, so we ignore.
 function pairs(arr) {
-	let newArr = arr.filter((e, i, arr) => {
-		return arr[i] - arr[i + 1] === 1 || arr[i] - arr[i + 1] === -1;
-	});
-	return newArr.length % 2 ? newArr.length - 1 : newArr.length;
+	let count = 0;
+	for (let i = 0; i < arr.length; i += 2) {
+		if (arr[i] - arr[i + 1] === 1 || arr[i] - arr[i + 1] === -1) {
+			count++;
+		}
+	}
+	return count;
 }
-console.log(pairs([1, 2, 5, 8, -4, -3, 7, 6, 5]));
+console.log(pairs([21, 20, 22, 40, 39, -56, 30, -55, 95, 94]));
