@@ -15,5 +15,18 @@
 // The length of the array is always one less than the length of the string.
 // All numbers are valid.
 // There can be duplicate letters and numbers.
-function lastSurvivor(letters, coords) {}
-console.log(lastSurvivor());
+function lastSurvivor(letters, coords) {
+	// With slice
+	for (let i = 0; i < coords.length; i++) {
+		letters = letters.slice(0, coords[i]) + letters.slice(coords[i] + 1);
+	}
+	return letters;
+	// With splice
+	// letters = letters.split('');
+	// for (let i = 0; i < coords.length; i++) {
+	//        letters.splice(coords[i], 1)
+	//  }
+	// return letters.join('')
+}
+
+console.log(lastSurvivor('zbk', [2, 1]));
