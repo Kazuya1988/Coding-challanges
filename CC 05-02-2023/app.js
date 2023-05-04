@@ -37,25 +37,45 @@ const maze = [
 	[1, 2, 1, 0, 1, 0, 1],
 ];
 const direction = ['N', 'N', 'N', 'N', 'N', 'E', 'E', 'E', 'E', 'E'];
+
 function mazeRunner(maze, directions) {
 	let startIndexRow = maze.findIndex((e) => e.includes(2));
 	let startIndexColumn = maze[startIndexRow].indexOf(2);
-	console.log(startIndexColumn);
-	console.log(startIndexRow);
-	const rowColumnMovement = directions.map((e) => {
-		if (e === 'N') {
-			return [startIndexRow--, startIndexColumn];
-		} else if (e === 'S') {
-			return [startIndexRow++, startIndexColumn];
-		} else if (e === 'E') {
-			return [startIndexRow, startIndexColumn++];
-		} else if (e === 'W') {
-			return [startIndexRow, startIndexColumn--];
+	const path = [];
+	path.push(maze[startIndexRow][startIndexColumn]);
+
+	for (let i = 0; i < directions.length; i++) {
+		if (directions[i] === 'N') {
+			startIndexRow--;
+		} else if (directions[i] === 'S') {
+			startIndexRow++;
+		} else if (directions[i] === 'E') {
+			startIndexColumn++;
+		} else if (directions[i] === 'W') {
+			startIndexColumn--;
 		}
-	});
-	console.log(rowColumnMovement);
-	return rowColumnMovement.map(([r, c]) => maze[r][c]);
+
+		if (
+			startIndexRow < 0 ||
+			startIndexRow >= maze.length ||
+			startIndexColumn < 0 ||
+			startIndexColumn >= maze[0].length
+		) {
+			return 'Dead';
+		}
+
+		path.push(maze[startIndexRow][startIndexColumn]);
+
+		if (path[path.length - 1] === 3) {
+			return 'Finish';
+		} else if (path[path.length - 1] === 1) {
+			return 'Dead';
+		}
+	}
+
+	return 'Lost';
 }
+
 console.log(mazeRunner(maze, direction));
 
 // Arrays, Strings
