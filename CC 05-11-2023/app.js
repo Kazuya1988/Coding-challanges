@@ -13,3 +13,16 @@ function betweenExtremes(numbers) {
 	return Math.max(...numbers) - Math.min(...numbers);
 }
 console.log(betweenExtremes([1, 434, 555, 34, 112]));
+
+// Strings
+// Substituting Variables Into Strings: Padded Numbers
+// Complete the solution so that it returns a formatted string. The return value should equal "Value is VALUE" where value is a 5 digit padded number.
+
+// Example:
+
+// solution(5) // should return "Value is 00005"
+function solution(value) {
+	// return `Value is ${new Array(5 - value.toString().length).fill(0).join('') + value}`;
+	return 'Value is ' + value.toString().padStart(5, '0');
+}
+console.log(solution(105));
