@@ -27,3 +27,19 @@ function zipWith(fn, a0, a1) {
 
 console.log(zipWith(Math.pow, [10, 10, 10, 10], [0, 1, 2, 3]));
 console.log(zipWith(Math.max, [1, 4, 7, 1, 4, 7], [4, 7, 1, 4, 7, 1]));
+
+// Strings
+// CamelCase Method
+// Write simple .camelCase method (camel_case function in PHP, CamelCase in C# or camelCase in Java) for strings. All words must have their first letter capitalized without spaces.
+
+// For instance:
+
+// "hello case".camelCase() => HelloCase
+// "camel case word".camelCase() => CamelCaseWord
+String.prototype.camelCase = function () {
+	return this.split(' ')
+		.map((e) => e.charAt(0).toUpperCase() + e.slice(1))
+		.join('');
+};
+console.log('hello case'.camelCase());
+console.log(''.camelCase());
