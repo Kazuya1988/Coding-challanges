@@ -46,3 +46,28 @@ function findOddNames(list) {
 }
 console.log(findOddNames(list1));
 console.log('b'.charCodeAt());
+
+// Backspaces in string
+// Assume "#" is like a backspace in string. This means that string "a#bc#d" actually is "bd"
+
+// Your task is to process a string with "#" symbols.
+
+// Examples
+// "abc#d##c"      ==>  "ac"
+// "abc##d######"  ==>  ""
+// "#######"       ==>  ""
+// ""              ==>  ""
+function cleanString(s) {
+	const arrS = s.split('');
+	const result = [];
+	for (let i = 0; i < arrS.length; i++) {
+		if (arrS[i] === '#') {
+			result.pop();
+		} else {
+			result.push(arrS[i]);
+		}
+	}
+	return result.join('');
+}
+console.log(cleanString('abc#d##c'));
+console.log(cleanString('#####'));
