@@ -41,3 +41,27 @@ console.log(splitInteger(20, 5));
 console.log(splitInteger(20, 6));
 // [3, 4, 4]
 console.log(splitInteger(11, 3));
+
+// Power of 4
+// Write a method that returns true if a given parameter is a power of 4, and false if it's not. If parameter is not an Integer (eg String, Array) method should return false as well.
+
+// (In C# Integer means all integer Types like Int16,Int32,.....)
+
+// Examples
+// powerOf4(1024) // returns true
+// powerOf4(44) // returns false
+// powerOf4("not a positive integer") // returns false
+function powerOf4(n) {
+	if (typeof n !== 'number' || n === 0) return false;
+	return (
+		(Number.isInteger(Math.sqrt(n)) && Math.pow(Math.sqrt(n), 4) % 4 === 0) ||
+		n === 1
+	);
+	// Clever using Math.log2()
+	// const powerOf4 = n => typeof n === "number" && Math.log2(n) % 2 === 0;
+}
+console.log(powerOf4(16));
+console.log(powerOf4(20));
+console.log(powerOf4('16'));
+console.log(powerOf4(0));
+console.log(powerOf4(81));
