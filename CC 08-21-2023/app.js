@@ -14,3 +14,27 @@ console.log(fives(myArray)); //returns [5, 10, 15];
 function factory(x) {
 	return (arr) => arr.map((n) => n * x);
 }
+
+// Strings
+// Vowel One
+// vowelOne
+// Write a function that takes a string and outputs a strings of 1's and 0's where vowels become 1's and non-vowels become 0's.
+
+// All non-vowels including non alpha characters (spaces,commas etc.) should be included.
+
+// Examples:
+
+// vowelOne( "abceios" ) // "1001110"
+
+// vowelOne( "aeiou, abc" ) // "1111100100"
+function vowelOne(str) {
+	const vowels = ['a', 'e', 'i', 'o', 'u'];
+	return str
+		.toLowerCase()
+		.split('')
+		.map((e) => (vowels.includes(e) ? 1 : 0))
+		.join('');
+}
+console.log(vowelOne('abceios')); // "1001110"
+console.log(vowelOne('aeiou, abc')); // "1111100100"
+console.log(vowelOne('vowelOne')); // "1111100100"
