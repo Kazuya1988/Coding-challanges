@@ -36,7 +36,7 @@ class PaginationHelper {
   pageItemCount(pageIndex) {
     // returns the number of items on the current page. page_index is zero based.
     // this method should return -1 for pageIndex values that are out of range
-    if (pageIndex + 1 > this.pageCount()) {
+    if (pageIndex + 1 > this.pageCount() || pageIndex < 0) {
       return -1;
     } else if (pageIndex < this.pageCount() - 1) {
       return this._itemsPerPage;
@@ -47,12 +47,15 @@ class PaginationHelper {
   pageIndex(itemIndex) {
     // determines what page an item is on. Zero based indexes
     // this method should return -1 for itemIndex values that are out of range
+    console.log(this._collection.length, this._itemsPerPage, this.pageCount());
     if (itemIndex >= this._collection.length || itemIndex < 0) {
       return -1;
     } else if (itemIndex === 0) {
       return 0;
     } else {
-      return this._collection.length % itemIndex;
+      return itemIndex >= this._itemsPerPage
+        ? Math.floor(itemIndex / this._itemsPerPage)
+        : 0;
     }
   }
 }
