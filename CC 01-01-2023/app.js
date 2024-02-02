@@ -11,10 +11,13 @@
 
 // The input will always be made of only lowercase letters and will never be empty.
 function wordsToMarks(string) {
-	let arrayLetters = string.split('');
-	let lettersToNumbers = arrayLetters.map(
-		(e) => e.toLowerCase().charCodeAt(0) - 96
-	);
-	return lettersToNumbers.reduce((sum, num) => sum + num, 0);
+  let arrayLetters = string.split("");
+  let lettersToNumbers = arrayLetters.map(
+    (e) => e.toLowerCase().charCodeAt(0) - 96
+  );
+  return lettersToNumbers.reduce((sum, num) => sum + num, 0);
 }
-console.log(wordsToMarks('love'));
+console.log(wordsToMarks("love"));
+
+// New
+// New push
